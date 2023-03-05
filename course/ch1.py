@@ -87,6 +87,7 @@ pipe = pipe.to("mps")
 pipe.enable_attention_slicing()
 
 prompt = "A photorealistic image of a cyberpunk city"
+prompt = "Logo, black and white, using a combination of different colors, shapes, and textures to represent an EduTech company building adaptive and personalized learning systems to provide student centricity rather than teacher centricity."
 
 # First-time "warmup" pass (see explanation above)
 _ = pipe(prompt, num_inference_steps=1)
@@ -121,3 +122,18 @@ summarizer(
 
 translator = pipeline("translation", model="Helsinki-NLP/opus-mt-fr-en")
 translator("Ce cours est produit par Hugging Face.")
+
+
+
+from diffusers import StableDiffusionPipeline
+import torch
+model_id = "prompthero/openjourney"
+model_id = "/Users/unclecode/devs/openjourney"
+pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
+# pipe = pipe.to("cuda")
+pipe = pipe.to("mps")
+prompt = "retro serie of different cars with different colors and shapes, mdjrny-v4 style"
+prompt = """mdjrny-v4 style photograph of a woman, standing on a balcony, stunning environment, ultra realistic, concept art, elegant, ((intricate)), ((highly detailed)), depth of field, (((professionally color graded))), 8k, 85mm, f/1. 8, art by artgerm and greg rutkowski and alphonse mucha"""
+image = pipe(prompt).images[0]
+image.save("./retro_cars.png")
+

@@ -1,0 +1,77 @@
+ A Comprehensive Guide to Convolutional Neural Networks — the ELI5 way
+
+Segment 2: Artificial Intelligence is making amazing progress in allowing machines to perceive the world as humans do. Computer Vision is a key area of focus, enabling things like Image & Video recognition, Image Analysis & Classification, Media Recreation, Recommendation Systems and Natural Language Processing. Deep Learning has been instrumental in this field and at its core lies one particular algorithm - a Convolutional Neural Network.
+
+Segment 3: Ready to try out your own convolutional neural nets? Check out Saturn Cloud for free compute (including free GPUs).
+
+Segment 4: Introduction
+
+Segment 5: A CNN sequence to classify handwritten digits
+
+Segment 6: A Convolutional Neural Network (ConvNet/CNN) is a Deep Learning algorithm that can take an input image, assign importance to various aspects/objects in the image and differentiate them from each other. It requires less pre-processing than other classification algorithms and can even learn these filters/characteristics with enough training. 
+
+Segment 7: The architecture of ConvNets are inspired by the organization of the Visual Cortex in the Human Brain, where individual neurons respond to stimuli only within restricted regions known as Receptive Fields. Collections of these fields overlap to cover the entire visual area. 
+
+Segment 8: Why ConvNets over Feed-Forward Neural Nets?
+
+ An image is nothing more than a grid of pixels and we can take that grid and transform it into something simpler by flattening it (e.g. 3x3 image matrix into a 9x1 vector). But if we were to use a Multi-Level Perceptron for classification purposes, this kind of technique wouldn't quite work with complex images with pixel dependencies all throughout the matrix. 
+
+Segment 2: So how do we handle these complex images? Enter ConvNet – an architecture that can capture the Spatial and Temporal dependencies in an image using relevant filters. This reduces the number of parameters involved, making the network efficient and allowing it to better fit to the dataset. That way we can train our network to understand images in more sophisticated ways. 
+
+Segment 3: You can see how this would come in handy when dealing with large images such as 8K (7680×4320). ConvNets make processing them easier, while still maintaining critical features which are necessary for accurate classification results. 
+
+Segment 4: Let’s look at an example – an RGB image is represented by three color planes – Red, Green, and Blue. There are other color spaces such as Grayscale, HSV, CMYK etc that help us interpret the composition of a digital photo in different ways. 
+
+Segment 5: One component of ConvNet is the convolution layer – also known as ‘the kernel’ which helps condense an image into its basic components while also preserving features essential for good predictions. A 5x5x1 image convoluted with a 3x3x1 kernel will produce a 3x3x1 convolved feature as its output!
+
+ In the above demonstration, the green section resembles our 5x5x1 input image, I. The element involved in the convolution operation in the first part of a Convolutional Layer is called the Kernel/Filter, K, represented in color yellow. We have selected K as a 3x3x1 matrix. 
+Segment 2: Kernel/Filter, K = 1 0 1 
+Segment 3: 0 1 0 
+Segment 4: 1 0 1 
+Segment 5: The Kernel shifts 9 times because of Stride Length = 1 (Non-Strided), every time performing an elementwise multiplication operation (Hadamard Product) between K and the portion P of the image over which the kernel is hovering. 
+Segment 6: Movement of the kernel - The filter moves to the right with a certain stride value till it parses the complete width. Moving on, it hops down to beginning (left) of the image with same stride value and repeats process until entire image is traversed.
+Segment 7: Convolution operation on MxNx3 image matrix with 3x3x3 Kernel 
+Segment 8: In case of images with multiple channels (e.g. RGB), kernel has same depth as that of input image. Matrix Multiplication is performed between Kn and In stack ([K1,I1]; [K2,I2]; [K3,I3]) and all results are summed with bias to give us squashed one-depth channel Convoluted Feature Output. 
+Segment 9: Convolution Operation with Stride Length = 2 
+Segment 10: The objective of Convolution Operation is to extract high-level features such as edges from input image. ConvNets need not be limited to only one Convolutional Layer; conventionally first ConvLayer is responsible for capturing low-level features such as edges, color, gradient orientation etc., and with added layers architecture adapts to high-level features as well giving us network which has wholesome understanding of images in dataset similar to how we would.
+
+ SAME padding: 5x5x1 image is padded with 0s to create a 6x6x1 image. 
+Segment 2: When we augment the 5x5x1 image into a 6x6x1 image and then apply the 3x3x1 kernel over it, we find that the convolved matrix turns out to be of dimensions 5x5x1. Hence the name — Same Padding.
+Segment 3: On the other hand, if we perform the same operation without padding, we are presented with a matrix that has dimensions of the Kernel (3x3x1) itself — Valid Padding. 
+Segment 4: Check out this repository for some helpful GIFs which illustrate how Padding and Stride Length work together to produce desired results.
+Segment 5: Let's take a look at Pooling Layers now. 
+Segment 6: When performing 3x3 pooling over a 5x5 convolved feature, 
+Segment 7: The Pooling Layer is used to reduce both spatial size and computational power by reducing dimensionality while still extracting features that are both rotational and positional invariant, essential in effectively training our model.
+Segment 8: We can use two types of Pooling - Max Pooling returns the maximum value from a portion of an image covered by the kernel, while Average Pooling returns the average of all values from a portion of an image covered by the kernel.
+
+ Max Pooling and Average Pooling are both types of Pooling, which is a method used in Convolutional Neural Networks (CNNs). Max Pooling not only performs as a Noise Suppressant, but also reduces dimensionality. On the other hand, Average Pooling only performs dimensionality reduction as a noise-suppressing mechanism. Thus, Max Pooling outperforms Average Pooling. 
+
+Segment 2: The Convolutional Layer and the Pooling Layer work together to form one layer of a Convolutional Neural Network. Depending on the complexity of the images, more such layers may be added to capture low-level details with greater accuracy, although this also increases computational power usage. 
+
+Segment 3: After this process, we flatten the output of the convolutional layer to feed it to a regular Neural Network for classification purposes. 
+
+Segment 4: Classification — Fully Connected Layer (FC Layer)
+
+Segment 5: Adding a Fully-Connected layer allows us to learn non-linear combinations of high-level features as represented by the output of the convolutional layer. This layer is trained to learn a possible non-linear function in that space. 
+
+Segment 6: By flattening our input image into a column vector, we can feed it into a Multi-Level Perceptron (MLP). BackPropagation is applied to each iteration of training over various epochs, allowing our model to distinguish between dominant features and low-level features in images and subsequently classify them using Softmax Classification technique. 
+
+Segment 7: There are various architectures available for CNNs which have been used widely in powering Artificial Intelligence applications today and in the future. Some of them are listed below:
+
+
+Outline:
+- Introduction:
+  - Definition of Convolutional Neural Networks (ConvNets/CNNs)
+  - Purpose of CNNs in Computer Vision
+- Advantages of CNNs over Feed-Forward Neural Nets
+- Input Image:
+  - Description of image dimensions and color spaces
+- Convolution Layer:
+  - Description of kernel and convolution operation
+  - Explanation of Valid Padding and Same Padding
+- Pooling Layer:
+  - Description of Max Pooling and Average Pooling
+- Classification:
+  - Fully Connected Layer (FC Layer)
+- List of CNN architectures:
+  - LeNet, AlexNet, VGGNet, GoogLeNet, ResNet, ZFNet.
